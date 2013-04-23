@@ -25,16 +25,14 @@ import android.content.res.TypedArray;
 import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import com.facebook.*;
 import com.facebook.android.R;
-import com.facebook.model.GraphUser;
 import com.facebook.internal.SessionAuthorizationType;
 import com.facebook.internal.SessionTracker;
 import com.facebook.internal.Utility;
+import com.facebook.model.GraphUser;
 
 import java.util.Collections;
 import java.util.List;
@@ -197,30 +195,30 @@ public class LoginButton extends Button {
     public LoginButton(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        if (attrs.getStyleAttribute() == 0) {
+//        if (attrs.getStyleAttribute() == 0) {
             // apparently there's no method of setting a default style in xml,
             // so in case the users do not explicitly specify a style, we need
             // to use sensible defaults.
-            this.setTextColor(getResources().getColor(R.color.com_facebook_loginview_text_color));
-            this.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    getResources().getDimension(R.dimen.com_facebook_loginview_text_size));
-            this.setPadding(getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_padding_left),
-                    getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_padding_top),
-                    getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_padding_right),
-                    getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_padding_bottom));
-            this.setWidth(getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_width));
-            this.setHeight(getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_height));
-            this.setGravity(Gravity.CENTER);
-            if (isInEditMode()) {
+//            this.setTextColor(getResources().getColor(R.color.com_facebook_loginview_text_color));
+//            this.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+//                    getResources().getDimension(R.dimen.com_facebook_loginview_text_size));
+//            this.setPadding(getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_padding_left),
+//                    getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_padding_top),
+//                    getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_padding_right),
+//                    getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_padding_bottom));
+//            this.setWidth(getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_width));
+//            this.setHeight(getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_height));
+//            this.setGravity(Gravity.CENTER);
+//            if (isInEditMode()) {
                 // cannot use a drawable in edit mode, so setting the background color instead
                 // of a background resource.
-                this.setBackgroundColor(getResources().getColor(R.color.com_facebook_blue));
+//                this.setBackgroundColor(getResources().getColor(R.color.com_facebook_blue));
                 // hardcoding in edit mode as getResources().getString() doesn't seem to work in IntelliJ
-                loginText = "Log in";
-            } else {
-                this.setBackgroundResource(R.drawable.com_facebook_loginbutton_blue);
-            }
-        }
+//                loginText = "Log in";
+//            } else {
+//                this.setBackgroundResource(R.drawable.com_facebook_loginbutton_blue);
+//            }
+//        }
         parseAttributes(attrs);
         if (!isInEditMode()) {
             initializeActiveSessionWithCachedToken(context);
@@ -521,6 +519,7 @@ public class LoginButton extends Button {
         fetchUserInfo = a.getBoolean(R.styleable.com_facebook_login_view_fetch_user_info, true);
         loginText = a.getString(R.styleable.com_facebook_login_view_login_text);
         logoutText = a.getString(R.styleable.com_facebook_login_view_logout_text);
+
         a.recycle();
     }
 
